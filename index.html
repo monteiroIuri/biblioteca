@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <title>Home - Biblioteca</title>
         <meta charset="UTF-8">
@@ -8,28 +8,406 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link href="css/personalizado.css" rel="stylesheet">
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">Biblioteca</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample07">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="index.html">Início</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="livros.html">Livros</a>
-                        </li>
-                    </ul>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">Biblioteca</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarsExample07">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="#">Início</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="#livros">Livros</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="crud.html">CRUD</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light display-4">Bem vindo a Biblioteca</h1>
+                        <p class="lead text-muted">
+                            Cadastre, veja, edite e delete livros. Por enquanto.
+                        <p>
+                            <a href="#prateleiras" class="btn btn-primary my-2">Prateleiras</a>
+                            <a href="crud.html" class="btn btn-secondary my-2">CRUD</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prateleiras" class="album py-5" style="background-color: #f9faff">
+                <div class="section-title">
+                    <h1 class="py-5 display-4 text-center">Prateleira 1</h1>
+                </div>
+
+                <div class="container">
+
+                    <h2 class="py-5 fw-light">Aventura</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <h2 class="py-5 fw-light">Ação</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">    
+                        <h2 class="py-5 fw-light">Ficção</h2>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <section class="album py-5" style="background-color: #ffffff">
+                <div class="section-title">
+                    <h1 class="py-5 display-4 text-center">Prateleira 2</h1>
+                </div>
+
+                <div class="container">
+
+                    <h2 class="py-5 fw-light">Romance</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <h2 class="py-5 fw-light">Comédia</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                <div class="card-body">
+                                    <p class="text-center">Nome Do Livro</p>
+                                    <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                    <p>- Autor do Livro</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        </div>
+                                        <small class="text-muted">Disponível</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">    
+                        <h2 class="py-5 fw-light">Biografia</h2>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" src="images/livros/livros.jpg">
+                                    <div class="card-body">
+                                        <p class="text-center">Nome Do Livro</p>
+                                        <p class="card-text">Um breve resumo sobre o livro que traga interesse para o leitor</p>
+                                        <p>- Autor do Livro</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                            </div>
+                                            <small class="text-muted">Disponível</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+        </main>
+
+        <footer class="text-muted py-2 fixed-bottom" style="background-color: #e3f2fd">
+            <div class="container">
+                <p class="text-center mt-2">
+                    <a class="btn btn-link-dark" style="text-decoration: none; font-weight: 500" href="#">Voltar para o topo</a>
+                </p>
             </div>
-        </nav>
-        <h1>Página Inicial</h1>
-        
+        </footer>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
