@@ -11,7 +11,7 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd">
+            <nav class="nav_BB navbar navbar-expand-lg navbar-light fixed-top">
                 <div class="container">
                     <a class="navbar-brand" href="index.html">Biblioteca</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,13 +21,15 @@
                     <div class="collapse navbar-collapse" id="navbarsExample07">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="#">Início</a>
+                                <a class="nav-link " aria-current="page" href="index.html#">Início</a>
                             </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="#livros">Livros</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Livros</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                                    <li><a class="dropdown-item" href="index.html#prateleira1">Prateleira 1</a></li>
+                                    <li><a class="dropdown-item" href="index.html#prateleira2">Prateleira 2</a></li>
+                                </ul>
                             </li>
-                            
                             <li class="nav-item">
                                 <a class="nav-link" href="crud.html">CRUD</a>
                             </li>
@@ -43,18 +45,18 @@
                     <div class="col-lg-6 col-md-8 mx-auto">
                         <h1 class="fw-light display-4">Bem vindo a Biblioteca</h1>
                         <p class="lead text-muted">
-                            Cadastre, veja, edite e delete livros. Por enquanto.
+                            Cadastre, veja, edite e delete livros.
                         <p>
-                            <a href="#prateleiras" class="btn btn-primary my-2">Prateleiras</a>
+                            <a href="#prateleira1" class="btn btn-primary my-2">Livros</a>
                             <a href="crud.html" class="btn btn-secondary my-2">CRUD</a>
                         </p>
                     </div>
                 </div>
             </section>
 
-            <section id="prateleiras" class="album py-5" style="background-color: #f9faff">
+            <section id="prateleira1" class="prateleira_impar album py-5">
                 <div class="section-title">
-                    <h1 class="py-5 display-4 text-center">Prateleira 1</h1>
+                    <h1 class="py-5 display-5 text-center">Prateleira 1</h1>
                 </div>
 
                 <div class="container">
@@ -225,9 +227,9 @@
                     </div>
             </section>
 
-            <section class="album py-5" style="background-color: #ffffff">
+            <section id="prateleira2" class="prateleira_par album py-5">
                 <div class="section-title">
-                    <h1 class="py-5 display-4 text-center">Prateleira 2</h1>
+                    <h1 class="py-5 display-5 text-center">Prateleira 2</h1>
                 </div>
 
                 <div class="container">
@@ -400,10 +402,10 @@
 
         </main>
 
-        <footer class="text-muted py-2 fixed-bottom" style="background-color: #e3f2fd">
+        <footer class="BB_footer text-muted py-2 fixed-bottom">
             <div class="container">
                 <p class="text-center mt-2">
-                    <a class="btn btn-link-dark" style="text-decoration: none; font-weight: 500" href="#">Voltar para o topo</a>
+                    <a class="btn btn-link-dark botao_footer" href="#">Voltar para o topo</a>
                 </p>
             </div>
         </footer>
