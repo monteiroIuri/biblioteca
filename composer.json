@@ -1,0 +1,16 @@
+{
+    "description": "Projeto Biblioteca",
+    "authors": [
+        {
+            "name": "Iuri Monteiro",
+            "email": "iurigms@gmail.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "App\\": "app"
+        }
+    },
+    "require":{}
+}
