@@ -24,7 +24,7 @@ class Crud
      */
     public function index() {
         /* 
-        $home = new \App\sts\Models\StsHome();
+        $home = new \App\bbs\Models\BbsCrud();
         $this->dados[''] = $home->index();
         
         */
