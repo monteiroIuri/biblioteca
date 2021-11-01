@@ -11,7 +11,7 @@ if (!defined('47b6t8')) {
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light display-4">Bem vindo a Biblioteca</h1>
             <p class="lead text-muted">
-                Cadastre, veja, edite e delete livros.
+                Veja, alugue e devolva livros.
             <p>
                 <a href="#prateleira1" class="btn btn-primary my-2">Livros</a>
                 <a href="<?php echo URL; ?>crud" class="btn btn-secondary my-2">CRUD</a>
@@ -20,6 +20,7 @@ if (!defined('47b6t8')) {
     </div>
 </section>
 <?php
+
 foreach ($this->dados['bbs_livros']['prateleiras'] as $prateleira) {
     $bgPrateleira = "prateleira_impar";
     $idprateleira = "prateleira".$prateleira['id']; 
@@ -51,10 +52,24 @@ foreach ($this->dados['bbs_livros']['prateleiras'] as $prateleira) {
                                 <p>- <?php echo $livro['autor']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
+                                        <?php 
+                                        if($livro['nome_situacao'] == "Disponível"){
+                                        ?>    
+                                        <a href="<?php echo URL; ?>alugar-livro/index?situacao=<?php echo $livro['id']; ?>"><button type="button" class="btn btn-sm btn-outline-primary">Alugar</button></a>
+                                        <button disabled type="button" class="btn btn-sm btn-outline-secondary">Devolver</button>
                                     </div>
-                                    <small class="text-muted"><?php echo $livro['nome_situacao']; ?></small>
+                                    <small class="text-success"><?php echo $livro['nome_situacao']; ?></small>   
+                                        <?php 
+                                        } else {
+                                        ?>
+                                        <button disabled type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                        <a href="<?php echo URL; ?>devolver-livro/index?situacao=<?php echo $livro['id']; ?>"><button type="button" class="btn btn-sm btn-outline-primary">Devolver</button></a>
+                                        
+                                    </div>
+                                    <small class="text-danger"><?php echo $livro['nome_situacao']; ?></small>
+                                    <?php 
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
