@@ -5,6 +5,12 @@ if (!defined('47b6t8')) {
     die("Erro: Página não encontrada!");
 }
 
+if(isset($this->dados['crud'])){
+    $qnt_prateleiras = $this->dados['crud']['qnt_prateleiras'][0]['qnt_prateleiras'];
+    $qnt_tipos = $this->dados['crud']['qnt_tipos'][0]['qnt_tipos'];
+    $qnt_livros = $this->dados['crud']['qnt_livros'][0]['qnt_livros'];
+}
+
 ?>
 
             <section class="py-5 text-center container">
@@ -20,7 +26,7 @@ if (!defined('47b6t8')) {
                                         <div class="card-body">
                                             <div class="card-body-value">
                                                 <i class="fas fa-book-open fa-3x"></i>
-                                                <h2 class="lead">18</h2>
+                                                <h2 class="lead"><?php echo $qnt_livros;?></h2>
                                             </div>
                                             <h6 class="card-title">Livros</h6>
                                         </div>
@@ -31,7 +37,7 @@ if (!defined('47b6t8')) {
                                         <div class="card-body">
                                             <div class="card-body-value">
                                                 <i class="fab fa-buromobelexperte fa-3x"></i>
-                                                <h2 class="lead">2</h2>
+                                                <h2 class="lead"><?php echo $qnt_prateleiras;?></h2>
                                             </div>
                                             <h6 class="card-title">Prateleiras</h6>
                                         </div>
@@ -42,7 +48,7 @@ if (!defined('47b6t8')) {
                                         <div class="card-body">
                                             <div class="card-body-value">
                                                 <i class="fas fa-bookmark fa-3x"></i>
-                                                <h2 class="lead">6</h2>
+                                                <h2 class="lead"><?php echo $qnt_tipos;?></h2>
                                             </div>    
                                             <h6 class="card-title">Tipos</h6>
                                         </div>
@@ -80,11 +86,15 @@ if (!defined('47b6t8')) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                foreach ($this->dados['crud']['prateleiras'] as $prateleira) {
+                                    extract($prateleira);
+                                ?>    
                                 <tr>
-                                    <th>1</th>
-                                    <td>Prateleira 1</td>
+                                    <th><?php echo $id; ?></th>
+                                    <td><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success">Disponível</span>
+                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar prateleira -->
@@ -97,23 +107,9 @@ if (!defined('47b6t8')) {
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Prateleira 2</td>
-                                    <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success">Disponível</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <!-- Botao modal editar prateleira -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarPrateleira">
-                                            Editar
-                                        </button>
-                                        <!-- Botao modal excluir prateleira -->
-                                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#excluirPrateleira">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -146,12 +142,16 @@ if (!defined('47b6t8')) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                foreach ($this->dados['crud']['tipos'] as $tipo) {
+                                    extract($tipo);
+                                ?>   
                                 <tr>
-                                    <th>1</th>
-                                    <td>Comédia</td>
-                                    <td class="d-none d-sm-table-cell">prateleira 1</td>
+                                    <th><?php echo $id; ?></th>
+                                    <td><?php echo $nome_tipo; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success">Disponível</span>
+                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar tipo -->
@@ -164,24 +164,9 @@ if (!defined('47b6t8')) {
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Aventura</td>
-                                    <td class="d-none d-sm-table-cell">Prateleira 2</td>
-                                    <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success">Disponível</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <!-- Botao modal editar tipo -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarTipo">
-                                            Editar
-                                        </button>
-                                        <!-- Botao modal excluir tipo -->
-                                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#excluirTipo">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -216,14 +201,18 @@ if (!defined('47b6t8')) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                foreach ($this->dados['crud']['livros'] as $livro) {
+                                    extract($livro);
+                                ?>  
                                 <tr>
-                                    <th>1</th>
-                                    <td>O Riso</td>
-                                    <td class="d-none d-sm-table-cell">Autor</td>
-                                    <td class="d-none d-sm-table-cell">Comédia</td>
-                                    <td class="d-none d-sm-table-cell">Prateleira 1</td>
+                                    <th><?php echo $id; ?></th>
+                                    <td><?php echo $nome_livro; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?php echo $autor; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?php echo $nome_tipo; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success">Disponível</span>
+                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar livro -->
@@ -236,26 +225,9 @@ if (!defined('47b6t8')) {
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Pinocchio</td>
-                                    <td class="d-none d-sm-table-cell">Autor</td>
-                                    <td class="d-none d-sm-table-cell">Aventura</td>
-                                    <td class="d-none d-sm-table-cell">Prateleira 2</td>
-                                    <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-danger">Indisponível</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <!-- Botao modal editar livro -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarLivro">
-                                            Editar
-                                        </button>
-                                        <!-- Botao modal excluir livro -->
-                                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#excluirLivro">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

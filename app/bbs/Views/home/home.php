@@ -22,11 +22,12 @@ if (!defined('47b6t8')) {
 <?php
 foreach ($this->dados['bbs_livros']['prateleiras'] as $prateleira) {
     $bgPrateleira = "prateleira_impar";
+    $idprateleira = "prateleira".$prateleira['id']; 
     if ($prateleira['id'] % 2 == 0) {
         $bgPrateleira = "prateleira_par";
     }
     ?>    
-        <section id="prateleira1" class="<?php echo $bgPrateleira; ?> album py-5">
+        <section id="<?php echo $idprateleira;?>" class="<?php echo $bgPrateleira; ?> album py-5">
             <div class="section-title">
                 <h1 class="py-5 display-5 text-center"><?php echo $prateleira['nome_prateleira']; ?></h1>
             </div>
