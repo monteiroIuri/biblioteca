@@ -66,6 +66,7 @@ class BbsHome {
                 INNER JOIN bbs_tipos AS bt ON bt.id = bl.id_tipo
                 INNER JOIN bbs_prateleiras AS bp ON bp.id = bl.id_prateleira
                 INNER JOIN bbs_sit_livros AS bsl ON bsl.id = bl.id_sit_livro
+                ORDER BY bl.id
                 ');
         $this->dados['livros'] = $listar->getResult();
         return $this->dados;

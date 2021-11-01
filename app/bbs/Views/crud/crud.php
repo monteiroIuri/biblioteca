@@ -18,7 +18,7 @@ if(isset($this->dados['crud'])){
                     <div class="col-lg-6 col-md-8 mx-auto">
                         <h1 class="fw-light display-4">CRUD - Biblioteca</h1>
                         <p class="lead text-muted">
-                            Cadastre, veja, edite e delete livros.
+                            Cadastre, veja, edite e delete prateleiras, tipos e livros.
                         <div class="container p-1">
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                                 <div class="">
@@ -204,6 +204,10 @@ if(isset($this->dados['crud'])){
                                 <?php 
                                 foreach ($this->dados['crud']['livros'] as $livro) {
                                     extract($livro);
+                                    $cor_badge = "success";
+                                    if($nome_situacao == "Indisponível"){ //gambi
+                                        $cor_badge = "danger";
+                                    }
                                 ?>  
                                 <tr>
                                     <th><?php echo $id; ?></th>
@@ -212,7 +216,7 @@ if(isset($this->dados['crud'])){
                                     <td class="d-none d-sm-table-cell"><?php echo $nome_tipo; ?></td>
                                     <td class="d-none d-sm-table-cell"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
+                                        <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar livro -->
