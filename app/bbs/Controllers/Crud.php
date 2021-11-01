@@ -4,7 +4,7 @@ namespace App\bbs\Controllers;
 
 if (!defined('47b6t8')) {
     header("Location: /");
-    die("Erro: Página não encontrada!");
+    die("Erro: Página nÃ£o encontrada!");
 }
 
 /**
@@ -23,12 +23,10 @@ class Crud
      * @return void
      */
     public function index() {
-        /* 
-        $home = new \App\bbs\Models\BbsCrud();
-        $this->dados[''] = $home->index();
         
-        */
-        $this->dados = [];
+        $home = new \App\bbs\Models\BbsCrud();
+        $this->dados['crud'] = $home->index();
+        
         $carregarView = new \Core\ConfigView("bbs/Views/crud/crud", $this->dados);
         $carregarView->renderizar();
     }
