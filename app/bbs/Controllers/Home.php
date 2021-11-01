@@ -23,12 +23,10 @@ class Home
      * @return void
      */
     public function index() {
-        /* 
-        $home = new \App\sts\Models\StsHome();
-        $this->dados[''] = $home->index();
+         
+        $home = new \App\bbs\Models\BbsHome();
+        $this->dados['bbs_livros'] = $home->index();
         
-        */
-        $this->dados = [];
         $carregarView = new \Core\ConfigView("bbs/Views/home/home", $this->dados);
         $carregarView->renderizar();
     }
