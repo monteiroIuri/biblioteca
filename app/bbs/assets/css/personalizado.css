@@ -63,3 +63,22 @@ h2.lead{
 .lista_impar{
     background-color: #f9faff
 }
+
+.aside{
+    position: fixed;
+    top: 40%;
+    right: -40px;
+    background-color: #DCDCDC;
+    border-radius: 15px 0px 0px 15px;
+    transition: ease 0.5s;
+}
+.aside:hover{
+    right: 0px;
+    transition: ease 0.5s;
+}
+
+.nav-link:hover{
+    color: #fff;
+    background-color: #0d6efd;
+}
+
