@@ -1,4 +1,16 @@
 <?php
+//Modal prateleira
+include_once 'modal_prateleira/cadastrarPrateleira.php';
+include_once 'modal_prateleira/editarPrateleira.php';
+include_once 'modal_prateleira/deletarPrateleira.php';
+//Modal Tipo
+include_once 'modal_tipo/cadastrarTipo.php';
+include_once 'modal_tipo/editarTipo.php';
+include_once 'modal_tipo/deletarTipo.php';
+//Modal Livros
+include_once 'modal_livro/cadastrarLivro.php';
+include_once 'modal_livro/editarLivro.php';
+include_once 'modal_livro/deletarLivro.php';
 
 if (!defined('47b6t8')) {
     header("Location: /");
@@ -9,11 +21,18 @@ if(isset($this->dados['crud'])){
     $qnt_prateleiras = $this->dados['crud']['qnt_prateleiras'][0]['qnt_prateleiras'];
     $qnt_tipos = $this->dados['crud']['qnt_tipos'][0]['qnt_tipos'];
     $qnt_livros = $this->dados['crud']['qnt_livros'][0]['qnt_livros'];
+    $prateleiras = $this->dados['crud']['prateleiras'];
+    $tipos = $this->dados['crud']['tipos'];
+    $livros = $this->dados['crud']['livros'];
 }
 
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+}
 ?>
 
-            <section class="py-5 text-center container">
+            <section id="dashboard" class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
                         <h1 class="fw-light display-4">CRUD - Biblioteca</h1>
@@ -60,12 +79,42 @@ if(isset($this->dados['crud'])){
                 </div>
             </section>
 
-            <section class="lista_impar album py-5">
+            <section>
+                <aside>
+                    <div class="aside" >
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                          <li class="nav-item">
+                            <a href="#dashboard" class="nav-link" aria-current="page">
+                              <i class="fas fa-tachometer fa-fw"></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#prateleiras" class="nav-link">
+                              <i class="fab fa-buromobelexperte fa-fw"></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#tipos" class="nav-link">
+                              <i class="fas fa-bookmark fa-fw"></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#livros" class="nav-link">
+                              <i class="fas fa-book-open fa-fw"></i>
+                            </a>
+                          </li>
+                        </ul>
+                        <hr>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="prateleiras" class="lista_impar album py-5">
 
                 <div class="section-title">
                     <h1 class="py-5 display-5 text-center">Prateleiras</h1>
                 </div>
-
                 <div class="container">
                     <div class="d-flex">
                         <div class="pb-4">
@@ -87,14 +136,18 @@ if(isset($this->dados['crud'])){
                             </thead>
                             <tbody>
                                 <?php 
-                                foreach ($this->dados['crud']['prateleiras'] as $prateleira) {
+                                foreach ($prateleiras as $prateleira) {
                                     extract($prateleira);
+                                    $cor_badge = "success";
+                                    if($nome_situacao == "Inativa"){ 
+                                        $cor_badge = "danger";
+                                    }
                                 ?>    
                                 <tr>
                                     <th><?php echo $id; ?></th>
-                                    <td><?php echo $nome_prateleira; ?></td>
+                                    <td style="max-width: 160px; overflow: hidden;"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
+                                        <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar prateleira -->
@@ -116,7 +169,7 @@ if(isset($this->dados['crud'])){
                 </div>
             </section>
 
-            <section class="lista_par album py-5">
+            <section id="tipos" class="lista_par album py-5">
                 <div class="section-title">
                     <h1 class="py-5 display-5 text-center">Tipos</h1>
                 </div>
@@ -143,15 +196,19 @@ if(isset($this->dados['crud'])){
                             </thead>
                             <tbody>
                                 <?php 
-                                foreach ($this->dados['crud']['tipos'] as $tipo) {
+                                foreach ($tipos as $tipo) {
                                     extract($tipo);
+                                    $cor_badge = "success";
+                                    if($nome_situacao == "Inativo"){ 
+                                        $cor_badge = "danger";
+                                    }
                                 ?>   
                                 <tr>
                                     <th><?php echo $id; ?></th>
                                     <td><?php echo $nome_tipo; ?></td>
                                     <td class="d-none d-sm-table-cell"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
-                                        <span class="badge bg-success"><?php echo $nome_situacao; ?></span>
+                                        <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
                                         <!-- Botao modal editar tipo -->
@@ -173,7 +230,7 @@ if(isset($this->dados['crud'])){
                 </div>
             </section>
 
-            <section class="lista_impar album py-5">
+            <section id="livros" class="lista_impar album py-5">
                 <div class="section-title">
                     <h1 class="py-5 display-5 text-center">Livros</h1>
                 </div>
@@ -202,7 +259,7 @@ if(isset($this->dados['crud'])){
                             </thead>
                             <tbody>
                                 <?php 
-                                foreach ($this->dados['crud']['livros'] as $livro) {
+                                foreach ($livros as $livro) {
                                     extract($livro);
                                     $cor_badge = "success";
                                     if($nome_situacao == "Indisponível"){ //gambi
@@ -237,279 +294,3 @@ if(isset($this->dados['crud'])){
                     </div>
                 </div>
             </section>
-
-            <!-- Modal Prateleiras -->
-            <!-- Editar -->
-            <div class="modal fade" id="editarPrateleira" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editar Prateleira</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_prateleira" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_prateleira">
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning">Editar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Cadastrar -->
-            <div class="modal fade" id="criarPrateleira" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Nova Prateleira</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_prateleira" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_prateleira">
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-success">Cadastrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Excluir -->
-            <div class="modal fade" id="excluirPrateleira" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Excluir Prateleira</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Tem certeza que deseja excluir a {nomePrateleira}?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-danger">Sim</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fim Modal Prateleiras -->
-
-            <!-- Modal Tipos -->
-            <!-- Editar -->
-            <div class="modal fade" id="editarTipo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editar Tipo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_tipo" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_tipo">
-
-                                <label for="prateleira" class="form-label">Prateleira</label>
-                                <select id="prateleira" class="form-select">
-                                    <option>Prateleira 1</option>
-                                    <option>Prateleira 2</option>
-                                </select>
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning">Editar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Cadastrar -->
-            <div class="modal fade" id="criarTipo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Novo Tipo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_tipo" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_tipo">
-
-                                <label for="prateleira" class="form-label">Prateleira</label>
-                                <select id="prateleira" class="form-select">
-                                    <option>Prateleira 1</option>
-                                    <option>Prateleira 2</option>
-                                </select>
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-success">Cadastrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Excluir -->
-            <div class="modal fade" id="excluirTipo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Excluir Tipo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Tem certeza que deseja excluir o tipo {nomeTipo}?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-danger">Sim</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fim Modal Tipos -->
-
-            <!-- Modal Livros -->
-            <!-- Editar -->
-            <div class="modal fade" id="editarLivro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_livro" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_livro">
-
-                                <label for="nome_autor" class="form-label">Autor</label>
-                                <input type="text" class="form-control" id="nome_autor">
-
-                                <label for="tipo" class="form-label">Tipo</label>
-                                <select id="tipo" class="form-select">
-                                    <option>Ação</option>
-                                    <option>Aventura</option>
-                                    <option>Ficção</option>
-                                    <option>Romance</option>
-                                    <option>Comédia</option>
-                                    <option>Biografia</option>
-                                </select>
-
-                                <label for="prateleira" class="form-label">Prateleira</label>
-                                <select id="prateleira" class="form-select">
-                                    <option>Prateleira 1</option>
-                                    <option>Prateleira 2</option>
-                                </select>
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning">Editar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Cadastrar -->
-            <div class="modal fade" id="criarLivro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Novo Livro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <label for="nome_livro" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome_livro">
-
-                                <label for="nome_autor" class="form-label">Autor</label>
-                                <input type="text" class="form-control" id="nome_autor">
-
-                                <label for="tipo" class="form-label">Tipo</label>
-                                <select id="tipo" class="form-select">
-                                    <option>Ação</option>
-                                    <option>Aventura</option>
-                                    <option>Ficção</option>
-                                    <option>Romance</option>
-                                    <option>Comédia</option>
-                                    <option>Biografia</option>
-                                </select>
-
-                                <label for="prateleira" class="form-label">Prateleira</label>
-                                <select id="prateleira" class="form-select">
-                                    <option>Prateleira 1</option>
-                                    <option>Prateleira 2</option>
-                                </select>
-
-                                <label for="sitacao" class="form-label">Situação</label>
-                                <select id="sitacao" class="form-select">
-                                    <option>Disponível</option>
-                                    <option>Indisponível</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-success">Cadastrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Excluir -->
-            <div class="modal fade" id="excluirLivro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Excluir Livro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Tem certeza que deseja excluir o livro {nomeLivro}?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-danger">Sim</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fim Modal Livros -->
-

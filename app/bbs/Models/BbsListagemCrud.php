@@ -12,7 +12,7 @@ if (!defined('47b6t8')) {
  *
  * @author Iuri Monteiro
  */
-class BbsCrud 
+class BbsListagemCrud 
 {
     private $dados;
     
@@ -23,6 +23,9 @@ class BbsCrud
         $this->getQntTipos();
         $this->getLivros();
         $this->getQntLivros();
+        $this->getSituacaoLivro();
+        $this->getSituacaoTipo();
+        $this->getSituacaoPrateleira();
         return $this->dados;
     }
     
@@ -36,6 +39,7 @@ class BbsCrud
                 FROM bbs_prateleiras AS bp
                 INNER JOIN bbs_sit_prateleiras as bsp
                 ON bsp.id = bp.id_sit_prateleira 
+                ORDER BY bp.id ASC
                 ');
         $this->dados['prateleiras'] = $listar->getResult();
         return $this->dados;
@@ -61,6 +65,7 @@ class BbsCrud
                 ON bp.id = bt.id_prateleira
                 INNER JOIN bbs_sit_tipos AS bst
                 ON bst.id = bt.id_sit_tipo
+                ORDER BY bt.id ASC
                 ');
         $this->dados['tipos'] = $listar->getResult();
         return $this->dados;
@@ -87,7 +92,7 @@ class BbsCrud
                 INNER JOIN bbs_tipos AS bt ON bt.id = bl.id_tipo
                 INNER JOIN bbs_prateleiras AS bp ON bp.id = bl.id_prateleira
                 INNER JOIN bbs_sit_livros AS bsl ON bsl.id = bl.id_sit_livro
-                ORDER BY bl.id
+                ORDER BY bl.id ASC
                 ');
         $this->dados['livros'] = $listar->getResult();
         return $this->dados;
@@ -97,6 +102,30 @@ class BbsCrud
         $qntLivros = new \App\bbs\Models\helper\BbsRead();
         $qntLivros->fullRead('SELECT COUNT(id) as qnt_livros FROM bbs_livros');
         $this->dados['qnt_livros'] = $qntLivros->getResult();
+        return $this->dados;
+    }
+    
+    public function getSituacaoPrateleira()
+    {
+        $listar = new \App\bbs\Models\helper\BbsRead();
+        $listar->fullRead("SELECT id, nome_situacao FROM bbs_sit_prateleiras ORDER BY nome_situacao ASC");
+        $this->dados['sit_prateleira'] = $listar->getResult();
+        return $this->dados;
+    }
+    
+    public function getSituacaoTipo()
+    {
+        $listar = new \App\bbs\Models\helper\BbsRead();
+        $listar->fullRead("SELECT id, nome_situacao FROM bbs_sit_tipos ORDER BY nome_situacao ASC");
+        $this->dados['sit_tipo'] = $listar->getResult();
+        return $this->dados;
+    }
+    
+    public function getSituacaoLivro()
+    {
+        $listar = new \App\bbs\Models\helper\BbsRead();
+        $listar->fullRead("SELECT id, nome_situacao FROM bbs_sit_livros ORDER BY nome_situacao ASC");
+        $this->dados['sit_livro'] = $listar->getResult();
         return $this->dados;
     }
     
