@@ -12,10 +12,6 @@ if(isset($this->dados['crud'])){
     $tipos = $this->dados['crud']['tipos'];
 }
 
-if(isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset($_SESSION['msg']);
-}
 ?>
 
             <section id="tipos" class="lista_par album py-5">
@@ -25,13 +21,18 @@ if(isset($_SESSION['msg'])){
 
                 <div class="container">
                     <div class="d-flex">
-                        <div class="pb-4">
-                            <!-- Botao modal criar tipo -->
-                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarTipo">
-                                Cadastrar Tipo
-                            </button>
-                        </div>  
+                        <!-- Botao modal criar tipo -->
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarTipo">
+                            Cadastrar Tipo
+                        </button>
                     </div>
+                    <hr class="hr-title">
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
@@ -60,10 +61,7 @@ if(isset($_SESSION['msg'])){
                                         <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
-                                        <!-- Botao modal editar tipo -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarTipo">
-                                            Editar
-                                        </button>
+                                        <?php echo "<a href='".URL."editar-tipo/index/$id' class='btn btn-outline-warning btn-sm'>Editar</a>";?>
                                         <?php echo "<a href='".URL."apagar-tipo/index/$id' class='btn btn-outline-danger btn-sm' data-confirm='Excluir'>Apagar</a>";?>
                                     </td>
                                 </tr>
