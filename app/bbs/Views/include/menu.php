@@ -13,13 +13,6 @@
                                 <a class="nav-link " aria-current="page" href="<?php echo URL; ?>">Início</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Livros</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown10">
-                                    <li><a class="dropdown-item" href="<?php echo URL; ?>#prateleira1">Prateleira 1</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo URL; ?>#prateleira2">Prateleira 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">CRUD</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown10">
                                     <li><a class="dropdown-item" href="<?php echo URL; ?>crud/index">Dashboard</a></li>

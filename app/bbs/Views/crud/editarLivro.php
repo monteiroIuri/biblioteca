@@ -64,7 +64,7 @@ if (isset($this->dados['form'][0])) {
                             }?></textarea>
                         </div>
                         <div class="row g-3">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label class="mb-2 mt-2" for="id_tipo"><span class="text-danger">*</span> Tipo:</label>
                                 <select name="id_tipo" id="id_tipo" class="form-control">
                                     <?php
@@ -79,22 +79,7 @@ if (isset($this->dados['form'][0])) {
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-4">
-                                <label class="mb-2 mt-2" for="id_prateleira"><span class="text-danger">*</span> Prateleira:</label>
-                                <select name="id_prateleira" id="id_prateleira" class="form-control">
-                                    <?php
-                                    foreach ($this->dados['select']['prat'] as $prat) {
-                                        extract($prat);
-                                        if ((isset($valorForm['id_prateleira'])) AND $valorForm['id_prateleira'] == $id) {
-                                            echo "<option value='$id' selected>$nome_prateleira</option>";
-                                        } else {
-                                            echo "<option value='$id'>$nome_prateleira</option>";
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label class="mb-2 mt-2" for="id_sit_livro"><span class="text-danger">*</span> Situação:</label>
                                 <select name="id_sit_livro" id="id_sit_livro" class="form-control">
                                     <?php
