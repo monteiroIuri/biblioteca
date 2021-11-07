@@ -57,7 +57,7 @@ class CarregarPg
     }
     
     private function pgPublica() {
-        $this->pgPublica = ["AlugarLivro", "ApagarPrateleira", "Crud", "DevolverLivro", "Erro", "Home", "Livros", "Prateleiras", "Tipos", "ApagarTipo", "ApagarLivro"];
+        $this->pgPublica = ["AlugarLivro", "ApagarPrateleira", "Crud", "DevolverLivro", "Erro", "Home", "Livros", "Prateleiras", "Tipos", "ApagarTipo", "ApagarLivro", "EditarPrateleira", "EditarTipo", "EditarLivro"];
         
         if(in_array($this->urlController, $this->pgPublica)){
             $this->classe = "\\App\\bbs\\Controllers\\" . $this->urlController;

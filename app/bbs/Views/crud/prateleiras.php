@@ -13,10 +13,6 @@ if(isset($this->dados['crud'])){
     $livros = $this->dados['crud']['livros'];
 }
 
-if(isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset($_SESSION['msg']);
-}
 ?>
             
             <section id="prateleiras" class="lista_impar album py-5">
@@ -26,13 +22,18 @@ if(isset($_SESSION['msg'])){
                 </div>
                 <div class="container">
                     <div class="d-flex">
-                        <div class="pb-4">
-                            <!-- Botao modal criar prateleira -->
-                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarPrateleira">
-                                Cadastrar Prateleira
-                            </button>
-                        </div>  
+                        <!-- Botao modal criar prateleira -->
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarPrateleira">
+                            Cadastrar Prateleira
+                        </button>
                     </div>
+                    <hr class="hr-title">
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
@@ -60,10 +61,7 @@ if(isset($_SESSION['msg'])){
                                         <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
-                                        <!-- Botao modal editar prateleira -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarPrateleira">
-                                            Editar
-                                        </button>
+                                        <?php echo "<a href='".URL."editar-prateleira/index/$id' class='btn btn-outline-warning btn-sm'>Editar</a>";?>
                                         <?php echo "<a href='".URL."apagar-prateleira/index/$id' class='btn btn-outline-danger btn-sm' data-confirm='Excluir'>Apagar</a>";?>
                                     </td>
                                 </tr>
