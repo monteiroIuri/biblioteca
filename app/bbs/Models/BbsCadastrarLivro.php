@@ -28,7 +28,7 @@ class BbsCadastrarLivro
         $this->dados = $dados;
         if(!empty($this->dados['nome_livro']) AND !empty($this->dados['autor']) AND 
                 !empty($this->dados['descricao']) AND !empty($this->dados['id_tipo']) AND 
-                !empty($this->dados['id_prateleira']) AND !empty($this->dados['id_sit_livro'])){
+                !empty($this->dados['id_sit_livro'])){
             $this->inserirLivro();
             $this->resultado = true;
         }else {
