@@ -46,7 +46,7 @@ class BbsEditarLivro
     public function viewLivro($id) {
         $this->id = (int) $id;
         $viewLivro = new \App\bbs\Models\helper\BbsRead();
-        $viewLivro->fullRead("SELECT id, nome_livro, autor, descricao, id_tipo, id_prateleira, id_sit_livro
+        $viewLivro->fullRead("SELECT id, nome_livro, autor, descricao, id_tipo, id_sit_livro
                 FROM bbs_livros 
                 WHERE id=:id
                 LIMIT :limit", "id={$this->id}&limit=1");

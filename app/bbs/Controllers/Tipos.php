@@ -28,16 +28,6 @@ class Tipos
         }
     }
     
-    /*public function editPrateleira()
-        $this->dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        if (!empty($this->dados['EditPrateleira'])) {
-            unset($this->dados['EditPrateleira']);
-            $editPrateleira = new \App\bbs\Models\BbsEditarPrateleira();
-            $editPrateleira->altPrateleira($this->dados);
-            $editPrateleira->getResultado();
-        }
-    }*/
-    
     public function index() {
         $this->cadTipo();
         

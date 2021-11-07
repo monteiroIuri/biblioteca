@@ -43,18 +43,7 @@ if (!defined('47b6t8')) {
                             </select>
                             <label for="id_tipo" >Tipo</label>
                         </div>  
-                        <div class="form-floating mb-3">     
-                            <select name="id_prateleira" id="id_prateleira" class="form-select" required>
-                                <option value="" selected>Selecione</option>
-                                <?php
-                                foreach ($prateleiras as $prateleira) {
-                                    extract($prateleira);
-                                    echo "<option value='$id'>$nome_prateleira</option>";
-                                }
-                                ?>
-                            </select>
-                            <label for="id_prateleira">Prateleira</label>
-                        </div> 
+                       
                         <div class="form-floating mb-3"> 
                             <select name="id_sit_livro" id="id_sit_livro" class="form-select" required>
                                 <option value="" selected>Selecione</option>
