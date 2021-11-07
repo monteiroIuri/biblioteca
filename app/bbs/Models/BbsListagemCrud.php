@@ -35,6 +35,7 @@ class BbsListagemCrud
                 SELECT
                 bp.id
                 ,bp.nome_prateleira
+                ,bsp.id as id_sit_prat
                 ,bsp.nome_situacao
                 FROM bbs_prateleiras AS bp
                 INNER JOIN bbs_sit_prateleiras as bsp
@@ -58,8 +59,10 @@ class BbsListagemCrud
                 SELECT
                 bt.id
                 ,bt.nome_tipo
+                ,bp.id as id_prat
                 ,bp.nome_prateleira
                 ,bst.nome_situacao
+                ,bst.id as id_sit_tipo
                 FROM bbs_tipos bt
                 INNER JOIN bbs_prateleiras AS bp 
                 ON bp.id = bt.id_prateleira
@@ -85,8 +88,12 @@ class BbsListagemCrud
                 bl.id
                 ,bl.nome_livro
                 ,bl.autor
+                ,bl.descricao
+                ,bt.id as id_tipo
                 ,bt.nome_tipo
+                ,bp.id as id_prat
                 ,bp.nome_prateleira
+                ,bsl.id as id_sit_livro
                 ,bsl.nome_situacao
                 FROM bbs_livros AS bl
                 INNER JOIN bbs_tipos AS bt ON bt.id = bl.id_tipo

@@ -19,8 +19,14 @@
                                     <li><a class="dropdown-item" href="<?php echo URL; ?>#prateleira2">Prateleira 2</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo URL; ?>crud">CRUD</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">CRUD</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                                    <li><a class="dropdown-item" href="<?php echo URL; ?>crud/index">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo URL; ?>prateleiras/index">Prateleiras</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo URL; ?>tipos/index">Tipos</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo URL; ?>livros/index">Livros</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -28,4 +34,3 @@
             </nav>
         </header>
         <main>
-            

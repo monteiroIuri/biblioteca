@@ -58,7 +58,6 @@ class BbsCadastrarLivro
                                     <strong>Erro:</strong> Não foi possível cadastrar Novo Livro. Tente novamente.
                                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                 </div>";
-            var_dump($this->dados);
             $this->resultado = false;
         }
         
