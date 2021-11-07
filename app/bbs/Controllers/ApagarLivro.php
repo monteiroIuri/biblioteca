@@ -8,25 +8,33 @@ if (!defined('47b6t8')) {
 }
 
 /**
- * Description of AlugarLivro
+ * Description of ApagarLivro
  *
  * @author Iuri Monteiro
  */
-class AlugarLivro {
+class ApagarLivro {
 
-    private $dadosId;
-    private $situacao;
+    /** @var $id Recebe o ID do usuário que será deletado do sistema*/
+    private $id;
     
-    public function index() {
-        $this->situacao = filter_input(INPUT_GET, 'situacao', FILTER_SANITIZE_NUMBER_INT);
-        $this->dadosId = $this->situacao;
-        if (!empty($this->dadosId)) {
-            $altSitLivro = new \App\bbs\Models\BbsAlugarLivro();
-            $altSitLivro->altSitLivro($this->dadosId);
+    /** Metodo para receber os dados da View e enviar para Models */
+    public function index($id = null) {
+        $this->id = (int) $id;
+        echo $this->id;
+        
+        if(!empty($this->id)){
+            $deleteLivro = new \App\bbs\Models\BbsApagarLivro();
+            $deleteLivro->deleteLivro($this->id);
+            echo "deu bom";
+        }else{
+            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-danger alert-dismissible fade show' role='alert'>
+                                    <strong>Erro:</strong> Necessário selecionar uma Prateleira.
+                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                </div>";
         }
         
-        $UrlDestino = URL . "#prateleira1";
-        header("Location: $UrlDestino");
+        $urlDestino = URL . "livros/index";
+        header("Location: $urlDestino");
     }
 
 }

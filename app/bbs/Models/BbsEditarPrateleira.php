@@ -8,60 +8,52 @@ if (!defined('47b6t8')) {
 }
 
 /**
- * Description of BbsCadastrarLivro
+ * Description of BbsEditarPrateleira
  *
  * @author Iuri Monteiro
  */
-class BbsCadastrarLivro
-{
+class BbsEditarPrateleira {
 
     private $resultado;
     private $dados;
+    private $dadosId;
+
+    function getResultado() {
+        return $this->resultado;
+    }
     
-    public function getResultado()
+    public function altPrateleira($dadosId = null)
     {
+        $this->dadosId = (int) $dadosId;
+        $this->verPrateleira();
+        if ($this->resultado) {
+            $this->updatePrateleira();
+        }else{
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Não foi alterado a situação do livro!</div>";
+            $this->resultado = false;
+        }
+    }
+
+    public function verPrateleira($dadosId) {
+        $this->dadosId = (int) $dadosId;
+        $verPrateleira = new \App\bbs\Models\helper\BbsRead();
+        $verPrateleira->fullRead("SELECT * FROM bbs_prateleiras
+                WHERE id =:id LIMIT :limit", "id=" . $this->dadosId . "&limit=1");
+        $this->resultado = $verPrateleira->getResult();
         return $this->resultado;
     }
 
-    public function cadLivro(array $dados)
-    {
-        $this->dados = $dados;
-        if(!empty($this->dados['nome_livro']) AND !empty($this->dados['autor']) AND 
-                !empty($this->dados['descricao']) AND !empty($this->dados['id_tipo']) AND 
-                !empty($this->dados['id_prateleira']) AND !empty($this->dados['id_sit_livro'])){
-            $this->inserirLivro();
+    private function updatePrateleira() {
+        $this->dados['modified'] = date("Y-m-d H:i:s");
+        $upPrateleira = new \App\bbs\Models\helper\BbsUpdate();
+        $upPrateleira->exeUpdate("bbs_prateleiras", $this->dados, "WHERE id =:id", "id=" . $this->dados['id']);
+        if ($upPrateleira->getResult()) {
+            $_SESSION['msg'] = "<div class='alert alert-success'>Usuário atualizado com sucesso!</div>";
             $this->resultado = true;
-        }else {
-            $this->resultado = false;
-            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-danger alert-dismissible fade show' role='alert'>
-                                    <strong>Erro:</strong> Não foi possível cadastrar Novo Livro. Preencha todos os campos.
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>";
-        }
-    }
-
-    private function inserirLivro()
-    {
-     
-        $this->dados['created'] = date("Y-m-d H:i:s");
-
-        $cadLivro = new \App\bbs\Models\helper\BbsCreate;
-        $cadLivro->exeCreate("bbs_livros", $this->dados);
-        if($cadLivro->getResult()){
-           $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-success alert-dismissible fade show' role='alert'>
-                                    Novo Livro cadastrado com <strong>sucesso!</strong>
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>";
-           $this->resultado = true;
-        }else{
-            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-danger alert-dismissible fade show' role='alert'>
-                                    <strong>Erro:</strong> Não foi possível cadastrar Novo Livro. Tente novamente.
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>";
-            var_dump($this->dados);
+        } else {
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: O usuario não foi atualizado!</div>";
             $this->resultado = false;
         }
-        
     }
-
-}
+    
+}   

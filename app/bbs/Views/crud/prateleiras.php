@@ -1,14 +1,15 @@
 <?php
 
-//Modal Livros
-include_once 'modal_livro/cadastrarLivro.php';
+//Modal prateleira
+include_once 'modal_prateleira/cadastrarPrateleira.php';
 
 if (!defined('47b6t8')) {
     header("Location: /");
     die("Erro: Página não encontrada!");
 }
-
 if(isset($this->dados['crud'])){
+    $prateleiras = $this->dados['crud']['prateleiras'];
+    $tipos = $this->dados['crud']['tipos'];
     $livros = $this->dados['crud']['livros'];
 }
 
@@ -17,18 +18,18 @@ if(isset($_SESSION['msg'])){
     unset($_SESSION['msg']);
 }
 ?>
+            
+            <section id="prateleiras" class="lista_impar album py-5">
 
-            <section id="livros" class="lista_impar album py-5">
                 <div class="section-title">
-                    <h1 class="py-5 display-5 text-center">Livros</h1>
+                    <h1 class="py-5 display-5 text-center">Prateleiras</h1>
                 </div>
-
                 <div class="container">
                     <div class="d-flex">
                         <div class="pb-4">
-                            <!-- Botao modal criar livro -->
-                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarLivro">
-                                Cadastrar Livro
+                            <!-- Botao modal criar prateleira -->
+                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#criarPrateleira">
+                                Cadastrar Prateleira
                             </button>
                         </div>  
                     </div>
@@ -37,38 +38,33 @@ if(isset($_SESSION['msg'])){
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nome</th>
-                                    <th class="d-none d-sm-table-cell">Autor</th>
-                                    <th class="d-none d-sm-table-cell">Tipo</th>
-                                    <th class="d-none d-sm-table-cell">Prateleira</th>
+                                    <th>Prateleira</th>
                                     <th class="d-none d-lg-table-cell">Situação</th>
                                     <th class="text-center">Ações</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
-                                foreach ($livros as $livro) {
-                                    extract($livro);
+                                foreach ($prateleiras as $prateleira) {
+                                    extract($prateleira);
                                     $cor_badge = "success";
-                                    if($nome_situacao == "Indisponível"){ //gambi
+                                    if($nome_situacao == "Inativa"){ 
                                         $cor_badge = "danger";
                                     }
-                                ?>  
+                                ?>    
                                 <tr>
                                     <td><?php echo $id; ?></td>
-                                    <td><?php echo $nome_livro; ?></td>
-                                    <td class="d-none d-sm-table-cell"><?php echo $autor; ?></td>
-                                    <td class="d-none d-sm-table-cell"><?php echo $nome_tipo; ?></td>
-                                    <td class="d-none d-sm-table-cell"><?php echo $nome_prateleira; ?></td>
+                                    <td style="max-width: 160px; overflow: hidden;"><?php echo $nome_prateleira; ?></td>
                                     <td class="d-none d-lg-table-cell">
                                         <span class="badge bg-<?php echo $cor_badge; ?>"><?php echo $nome_situacao; ?></span>
                                     </td>
                                     <td class="text-center">
-                                        <!-- Botao modal editar livro -->
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarLivro">
+                                        <!-- Botao modal editar prateleira -->
+                                        <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarPrateleira">
                                             Editar
                                         </button>
-                                        <?php echo "<a href='".URL."apagar-livro/index/$id' class='btn btn-outline-danger btn-sm' data-confirm='Excluir'>Apagar</a>";?>
+                                        <?php echo "<a href='".URL."apagar-prateleira/index/$id' class='btn btn-outline-danger btn-sm' data-confirm='Excluir'>Apagar</a>";?>
                                     </td>
                                 </tr>
                                 <?php
@@ -90,7 +86,7 @@ if(isset($_SESSION['msg'])){
                         </a>
                       </li>
                       <li>
-                        <a href="<?php echo URL; ?>prateleiras/index" class="item nav-link">
+                        <a href="<?php echo URL; ?>prateleiras/index" class="item nav-link active">
                           <i class="fab fa-buromobelexperte fa-fw"></i>
                         </a>
                       </li>
@@ -100,7 +96,7 @@ if(isset($_SESSION['msg'])){
                         </a>
                       </li>
                       <li>
-                        <a href="<?php echo URL; ?>livros/index" class="item nav-link active">
+                        <a href="<?php echo URL; ?>livros/index" class="item nav-link">
                           <i class="fas fa-book-open fa-fw"></i>
                         </a>
                       </li>

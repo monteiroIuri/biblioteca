@@ -8,32 +8,14 @@ if (!defined('47b6t8')) {
 }
 
 /**
- * CONTROLLER da página de CRUD
+ * CONTROLLER da página de Tipos
  *
  * @author Iuri Monteiro
  */
-class Crud 
+class Tipos 
 {
     /** @var array $dados Recebe os dados que devem ser enviados para a VIEW */
     private $dados;
-
-    /**
-     * Instanciar a classe responsável em carregar a VIEW
-     * 
-     * @return void
-     */
-    
-    
-    public function cadPrateleira()
-    {
-        $this->dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        if (!empty($this->dados['CadPrateleira'])) {
-            unset($this->dados['CadPrateleira']);
-            $cadPrateleira = new \App\bbs\Models\BbsCadastrarPrateleira();
-            $cadPrateleira->cadPrateleira($this->dados);
-            $cadPrateleira->getResultado();
-        }
-    }
     
     public function cadTipo()
     {
@@ -46,25 +28,22 @@ class Crud
         }
     }
     
-    public function cadLivro()
-    {
+    /*public function editPrateleira()
         $this->dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        if (!empty($this->dados['CadLivro'])) {
-            unset($this->dados['CadLivro']);
-            $cadTipo = new \App\bbs\Models\BbsCadastrarLivro();
-            $cadTipo->cadLivro($this->dados);
-            $cadTipo->getResultado();
+        if (!empty($this->dados['EditPrateleira'])) {
+            unset($this->dados['EditPrateleira']);
+            $editPrateleira = new \App\bbs\Models\BbsEditarPrateleira();
+            $editPrateleira->altPrateleira($this->dados);
+            $editPrateleira->getResultado();
         }
-    }
+    }*/
     
     public function index() {
-        $this->cadPrateleira();
         $this->cadTipo();
-        $this->cadLivro();
         
         $home = new \App\bbs\Models\BbsListagemCrud();
         $this->dados['crud'] = $home->index();
-        $carregarView = new \Core\ConfigView("bbs/Views/crud/crud", $this->dados);
+        $carregarView = new \Core\ConfigView("bbs/Views/crud/tipos", $this->dados);
         $carregarView->renderizar();
     }
 }

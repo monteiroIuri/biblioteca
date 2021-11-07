@@ -9,8 +9,7 @@ if (!defined('47b6t8')) {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <?php 
-                
-                $situacaoPrateleira = $this->dados['crud']['sit_prateleira'];
+            $situacaoPrateleira = $this->dados['crud']['sit_prateleira'];
                 
             ?>
             <form method="POST">    

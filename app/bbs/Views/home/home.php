@@ -10,23 +10,27 @@ if(isset($this->dados['bbs_livros'])){
     $tipos = $this->dados['bbs_livros']['tipos'];
     $livros = $this->dados['bbs_livros']['livros'];
 }
+
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+}    
 ?>
 
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light display-4">Bem vindo a Biblioteca</h1>
-            <p class="lead text-muted">
-                Veja, alugue e devolva livros.
-            <p>
-                <a href="#prateleira1" class="btn btn-primary my-2">Livros</a>
-                <a href="<?php echo URL; ?>crud" class="btn btn-secondary my-2">CRUD</a>
-            </p>
-        </div>
-    </div>
-</section>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light display-4">Bem vindo a Biblioteca</h1>
+                    <p class="lead text-muted">
+                        Veja, alugue e devolva livros.
+                    <p>
+                        <a href="#prateleira1" class="btn btn-primary my-2">Livros</a>
+                        <a href="<?php echo URL; ?>crud/index" class="btn btn-secondary my-2">CRUD</a>
+                    </p>
+                </div>
+            </div>
+        </section>
 <?php
-
 foreach ($prateleiras as $prateleira) {
     extract($prateleira);
     $bgPrateleira = "prateleira_impar";
@@ -34,6 +38,7 @@ foreach ($prateleiras as $prateleira) {
     if ($prateleira['id'] % 2 == 0) {
         $bgPrateleira = "prateleira_par";
     }
+    if($id_sit_prateleira == 1){
     ?>    
         <section id="<?php echo $idprateleira;?>" class="<?php echo $bgPrateleira; ?> album py-5">
             <div class="section-title">
@@ -44,6 +49,7 @@ foreach ($prateleiras as $prateleira) {
     foreach ($tipos as $tipo) {
         if ($tipo['id_prateleira'] == $prateleira['id']) {
             extract($tipo);
+            if($id_sit_tipo == 1 ){
             ?>           
                 <h2 class="py-5 fw-light"><?php echo $tipo['nome_tipo']; ?></h2>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">       
@@ -89,11 +95,13 @@ foreach ($prateleiras as $prateleira) {
             ?>
                 </div>                  
             <?php
+            }
         }
     }
     ?>                     
             </div>     
         </section>       
 <?php
+    }
 }
 ?>           
