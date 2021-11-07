@@ -8,36 +8,14 @@ if (!defined('47b6t8')) {
 }
 
 /**
- * CONTROLLER da página de CRUD
+ * CONTROLLER da página de Livros
  *
  * @author Iuri Monteiro
  */
-class Crud 
+class Livros 
 {
     /** @var array $dados Recebe os dados que devem ser enviados para a VIEW */
     private $dados;
-    
-    public function cadPrateleira()
-    {
-        $this->dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        if (!empty($this->dados['CadPrateleira'])) {
-            unset($this->dados['CadPrateleira']);
-            $cadPrateleira = new \App\bbs\Models\BbsCadastrarPrateleira();
-            $cadPrateleira->cadPrateleira($this->dados);
-            $cadPrateleira->getResultado();
-        }
-    }
-    
-    public function cadTipo()
-    {
-        $this->dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        if (!empty($this->dados['CadTipo'])) {
-            unset($this->dados['CadTipo']);
-            $cadTipo = new \App\bbs\Models\BbsCadastrarTipo();
-            $cadTipo->cadTipo($this->dados);
-            $cadTipo->getResultado();
-        }
-    }
     
     public function cadLivro()
     {
@@ -61,14 +39,11 @@ class Crud
     }*/
     
     public function index() {
-        $this->cadPrateleira();
-        $this->cadTipo();
         $this->cadLivro();
-        //$this->editPrateleira();
         
         $home = new \App\bbs\Models\BbsListagemCrud();
         $this->dados['crud'] = $home->index();
-        $carregarView = new \Core\ConfigView("bbs/Views/crud/crud", $this->dados);
+        $carregarView = new \Core\ConfigView("bbs/Views/crud/livros", $this->dados);
         $carregarView->renderizar();
     }
 }

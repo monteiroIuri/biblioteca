@@ -29,6 +29,7 @@ class BbsHome {
                 SELECT
                 id
                 ,nome_prateleira
+                ,id_sit_prateleira
                 FROM bbs_prateleiras
                 ');
         $this->dados['prateleiras'] = $listar->getResult();
@@ -42,6 +43,7 @@ class BbsHome {
                 bt.id
                 ,bt.id_prateleira
                 ,bt.nome_tipo
+                ,bt.id_sit_tipo
                 FROM bbs_tipos bt
                 INNER JOIN bbs_prateleiras AS bp ON bt.id_prateleira = bp.id
                 ');

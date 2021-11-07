@@ -25,7 +25,7 @@ class DevolverLivro {
             $altSitLivro->altSitLivro($this->dadosId);
         }
         
-        $UrlDestino = URL . "#prateleira1";
+        $UrlDestino = URL;
         header("Location: $UrlDestino");
     }
 

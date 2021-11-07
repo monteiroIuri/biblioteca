@@ -32,7 +32,10 @@ class BbsDevolverLivro
         if ($this->dadosLivro) {
             $this->altLivro();
         }else{
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Não foi alterado a situação do livro!</div>";
+            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-danger alert-dismissible fade show' role='alert'>
+                                    <strong>Erro:</strong> Não foi possível devolver o livro.
+                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                </div>";
             $this->resultado = false;
         }
     }
@@ -56,10 +59,16 @@ class BbsDevolverLivro
         $upLivro->exeUpdate("bbs_livros", $this->dados, "WHERE id =:id", "id={$this->dadosId}");
 
         if ($upLivro->getResult()) {
-            $_SESSION['msg'] = "<div class='alert alert-success'>Alterado a situação do slide do carousel!</div>";
+            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-success alert-dismissible fade show' role='alert'>
+                                    Livro devolvido com <strong>sucesso!</strong>
+                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                </div>";
             $this->resultado = true;
         } else {
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Não foi alterado a situação do slide do carousel!</div>";
+            $_SESSION['msg'] = "<div class='mt-2 container text-center alert alert-danger alert-dismissible fade show' role='alert'>
+                                    <strong>Erro:</strong> Não foi possível devolver o livro.
+                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                </div>";
             $this->resultado = false;
         }
     }
