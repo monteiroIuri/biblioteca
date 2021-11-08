@@ -14,7 +14,7 @@ if (!defined('47b6t8')) {
  */
 class Tipos 
 {
-    /** @var array $dados Recebe os dados que devem ser enviados para a VIEW */
+
     private $dados;
     
     public function cadTipo()

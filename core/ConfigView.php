@@ -28,7 +28,6 @@ class ConfigView
     public function __construct($nome, array $dados) {
         $this->nome = $nome;
         $this->dados = $dados;
-        //echo "Carregar a view: " . $this->nome . "<br>";
     }
     
     /**
@@ -39,14 +38,16 @@ class ConfigView
      * @return void
      */
     public function renderizar() {
-        if(file_exists('app/' . $this->nome . '.php')){
-            include 'app/bbs/Views/include/head.php';
-            include 'app/bbs/Views/include/menu.php';
-            include 'app/' . $this->nome . '.php';
-            include 'app/bbs/Views/include/footer.php';
-        }else{
+        
+        if(!file_exists('app/' . $this->nome . '.php')){
             echo "Página não encontrada: {$this->nome}<br>";
             die("Página não encontrada!");
-        }        
+        }
+        
+        include 'app/bbs/Views/include/head.php';
+        include 'app/bbs/Views/include/menu.php';
+        include 'app/' . $this->nome . '.php';
+        include 'app/bbs/Views/include/footer.php';  
+               
     }
 }

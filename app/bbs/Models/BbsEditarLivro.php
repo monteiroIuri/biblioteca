@@ -15,34 +15,20 @@ if (!defined('47b6t8')) {
 class BbsEditarLivro 
 {
     
-    /** @var $resultadoBd Recebe o resultado das informações que vieram do banco de dados */
     private $resultadoBd;
-    
-    /** @var bool $resultado Recebe o resultado das informações que estão sendo manipuladas */
     private $resultado;
-    
-    /** @var int $id Recebe o ID do usuário que será editado */
     private $id;
-    
-    /** @var array $dados Recebe os dados serão enviados para a View */
     private $dados;
-    
-    /** @var $listRegistryEdit Recebe os dados que serão usados no dropdown do formulário */
     private $listRegistryEdit;
-
-    /** @return Retorna o resultado verdadeiro ou falso */
+    
     function getResultado() {
         return $this->resultado;
     }
     
-    /** @return Retorna o resultado do banco de dados*/
     function getResultadoBd() {
         return $this->resultadoBd;
     }
 
-    /**
-     * Método para fazer busca na tabela adms_users e validar as informações sobre o usuário antes de editar
-     */
     public function viewLivro($id) {
         $this->id = (int) $id;
         $viewLivro = new \App\bbs\Models\helper\BbsRead();
@@ -63,9 +49,6 @@ class BbsEditarLivro
         }
     }
 
-    /**
-     * Método para validar os dados antes que a edição seja feita e retirar campos especificos da validação
-     * @param array $dados Recebe a informação que será validada*/
     public function update(array $dados) {
         $this->dados = $dados;
         
@@ -76,9 +59,6 @@ class BbsEditarLivro
         }
     }
 
-    /** Metodo privado, só pode ser chamado na classe
-     * Metodo usado para salvar as informações editadas no banco de dados
-     */
     private function edit() {
         $this->dados['modified'] = date("Y-m-d H:i:s");
 
@@ -100,7 +80,6 @@ class BbsEditarLivro
         }
     }
 
-    /** Metodo usado para listar informações no dropdown do formulário*/
     public function listSelect() {
         $list = new \App\bbs\Models\helper\BbsRead();
         $list->fullRead("SELECT id, nome_tipo FROM bbs_tipos ORDER BY id ASC");

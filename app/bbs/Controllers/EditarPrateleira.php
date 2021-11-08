@@ -15,16 +15,9 @@ if (!defined('47b6t8')) {
 class EditarPrateleira 
 {
     
-    /** @var $dados Recebe as informações que serão enviadas para a View*/
     private $dados;
-    
-    /** @var $dadosForm Recebe as informações do formulário que serão enviadas para a Models*/
     private $dadosForm;
-    
-    /** @var $id Recebe a Id do usuário */
     private $id;
-
-    /** Metodo para receber os dados da View e enviar para Models */
     public function index($id) {
         $this->id = (int) $id;
 
@@ -44,9 +37,6 @@ class EditarPrateleira
         }
     }
 
-    /** Metodo privado, só pode ser chamado na classe
-     * Metodo usado para carregar os botões, enviar as informações para a View e listar informações no dropdown do formulário
-     */
     private function viewEditPrat() {
 
         $listSelect = new \App\bbs\Models\BbsEditarPrateleira();
@@ -56,9 +46,6 @@ class EditarPrateleira
         $carregarView->renderizar();
     }
 
-    /** Metodo privado, só pode ser chamado na classe
-     * Metodo usado para manter as informações no formulário e enviar para a Models para que a edição seja feita
-     */
     private function editPrat() {
         if (!empty($this->dadosForm['EditPratileira'])) {
             unset($this->dadosForm['EditPratileira']);

@@ -14,10 +14,9 @@ if (!defined('47b6t8')) {
  */
 class ApagarLivro {
 
-    /** @var $id Recebe o ID do usuário que será deletado do sistema*/
+ 
     private $id;
     
-    /** Metodo para receber os dados da View e enviar para Models */
     public function index($id = null) {
         $this->id = (int) $id;
         echo $this->id;
