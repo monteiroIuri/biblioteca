@@ -15,16 +15,9 @@ if (!defined('47b6t8')) {
 class EditarTipo 
 {
     
-    /** @var $dados Recebe as informações que serão enviadas para a View*/
     private $dados;
-    
-    /** @var $dadosForm Recebe as informações do formulário que serão enviadas para a Models*/
     private $dadosForm;
-    
-    /** @var $id Recebe a Id do usuário */
     private $id;
-
-    /** Metodo para receber os dados da View e enviar para Models */
     public function index($id) {
         $this->id = (int) $id;
 
@@ -43,10 +36,6 @@ class EditarTipo
             $this->editTipo();
         }
     }
-
-    /** Metodo privado, só pode ser chamado na classe
-     * Metodo usado para carregar os botões, enviar as informações para a View e listar informações no dropdown do formulário
-     */
     private function viewEditTipo() {
 
         $listSelect = new \App\bbs\Models\BbsEditarTipo();
@@ -55,10 +44,7 @@ class EditarTipo
         $carregarView = new \Core\ConfigView("bbs/Views/crud/editarTipo", $this->dados);
         $carregarView->renderizar();
     }
-
-    /** Metodo privado, só pode ser chamado na classe
-     * Metodo usado para manter as informações no formulário e enviar para a Models para que a edição seja feita
-     */
+    
     private function editTipo() {
         if (!empty($this->dadosForm['EditTipo'])) {
             unset($this->dadosForm['EditTipo']);
